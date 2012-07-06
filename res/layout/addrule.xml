@@ -54,6 +54,7 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:background="@drawable/btn_lightblue_glossy"
+		    android:onClick="onSave"
 		    android:text="@string/btnRuleSave" />
 
 		<Button
@@ -62,6 +63,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_alignParentRight="true"
 		    android:background="@drawable/btn_lightblue_glossy"
+		    android:onClick="onCancel"
 		    android:text="@string/btnRuleCancel" />
 	    
 	</RelativeLayout>

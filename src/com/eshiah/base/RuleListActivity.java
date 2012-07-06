@@ -9,9 +9,13 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.eshiah.adapter.RuleAdapter;
+import com.eshiah.core.RuleRecord;
 
-public class AppActivity extends Activity {
+public class RuleListActivity extends Activity {
 	RuleAdapter ruleAdapter;
+	public static final int RULE_ENTRY_REQUEST_CODE = 1;
+	
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,10 +37,24 @@ public class AppActivity extends Activity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
     	if (item.getItemId() == R.id.add_rule_menu_item) {
     		Intent intent = new Intent(this, AddRuleActivity.class);
-    		startActivity(intent);
+    		//startActivity(intent);
+    		startActivityForResult(intent, RULE_ENTRY_REQUEST_CODE);
     		return true;
     	}
     	return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	if (requestCode == RULE_ENTRY_REQUEST_CODE) {
+    		if (resultCode == RESULT_OK) {
+    			String ruleName = data.getStringExtra("RuleName");
+    			String ruleTrigger = data.getStringExtra("RuleTrigger");
+    			String ruleAction = data.getStringExtra("RuleAction");
+    			ruleAdapter.addRuleRecord(new RuleRecord(ruleName,ruleTrigger,ruleAction));
+    			ruleAdapter.notifyDataSetChanged();
+    		}
+    	}
     }
     
 }

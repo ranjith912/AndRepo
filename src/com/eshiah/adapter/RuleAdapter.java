@@ -57,5 +57,9 @@ public class RuleAdapter extends BaseAdapter {
 		ruleRecordList.add(new RuleRecord("Rule2","Yearly","Notification"));
 		ruleRecordList.add(new RuleRecord("Rule3","weekly","Vibrate"));
 	}
+	
+	public void addRuleRecord(RuleRecord ruleRecord){
+		ruleRecordList.add(ruleRecord);
+	}
 
 }
