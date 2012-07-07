@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.eshiah.adapter.RuleAdapter;
 import com.eshiah.core.RuleRecord;
+import com.eshiah.db.RuleTrackerOpenHelper;
 
 public class RuleListActivity extends Activity {
 	RuleAdapter ruleAdapter;
@@ -25,6 +26,12 @@ public class RuleListActivity extends Activity {
         ListView ruleListView=(ListView)findViewById(R.id.rule_list);
         ruleAdapter = new RuleAdapter();
         ruleListView.setAdapter(ruleAdapter);
+        
+        
+        RuleTrackerOpenHelper ruleTrackerOpenHelper = new RuleTrackerOpenHelper(this);
+        ruleTrackerOpenHelper.getWritableDatabase();
+        
+        
     }
     @Override
     public boolean onCreateOptionsMenu(Menu m) {
